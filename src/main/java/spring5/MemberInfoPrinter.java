@@ -2,7 +2,9 @@ package spring5;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
+@Component("infoPrinter")	
 public class MemberInfoPrinter {
 	
 		//두 필드에 @Autowired 애노테이션을 붙였다. 이렇게 Autowired 애노테이션을 의존 주입대상에 붙이면

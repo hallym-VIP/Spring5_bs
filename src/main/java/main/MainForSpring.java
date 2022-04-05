@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import config.AppCtx;
+import config.ComAppCtx;
 import spring5.ChangePasswordService;
 import spring5.DuplicateMemberException;
 import spring5.MemberInfoPrinter;
@@ -20,10 +20,10 @@ import spring5.WrongIdPasswordException;
 
 public class MainForSpring {
 
-private static ApplicationContext ctx = null;
+	private static ApplicationContext ctx = null;
 	
 	public static void main(String[] args) throws IOException {
-		ctx = new AnnotationConfigApplicationContext(AppCtx.class);
+		ctx = new AnnotationConfigApplicationContext(ComAppCtx.class);
 		
 		BufferedReader reader = 
 				new BufferedReader(new InputStreamReader(System.in));
@@ -60,7 +60,7 @@ private static ApplicationContext ctx = null;
 			return;
 		}
 		MemberRegisterService regSvc = 
-				ctx.getBean("memberRegSvc", MemberRegisterService.class);
+				ctx.getBean("memberRegisterService",MemberRegisterService.class);
 		RegisterRequest req = new RegisterRequest();
 		req.setEmail(arg[1]);
 		req.setName(arg[2]);
@@ -84,8 +84,8 @@ private static ApplicationContext ctx = null;
 			printHelp();
 			return;
 		}
-		ChangePasswordService changePwdSvc = 
-				ctx.getBean("changePwdSvc", ChangePasswordService.class);
+		ChangePasswordService changePwdSvc =
+				ctx.getBean(ChangePasswordService.class);
 		try {
 			changePwdSvc.changePassword(arg[1], arg[2], arg[3]);
 			System.out.println("암호를 변경했습니다.\n");
@@ -107,7 +107,7 @@ private static ApplicationContext ctx = null;
 
 	private static void processListCommand() {
 		MemberListPrinter listPrinter = 
-				ctx.getBean("memberListPrinter", MemberListPrinter.class);
+				ctx.getBean("listPrinter", MemberListPrinter.class);
 		listPrinter.printAll();
 	}
 
@@ -117,7 +117,7 @@ private static ApplicationContext ctx = null;
 			return;
 		}
 		MemberInfoPrinter infoPrinter = 
-				ctx.getBean("memberInfoPrinter", MemberInfoPrinter.class);
+				ctx.getBean("infoPrinter", MemberInfoPrinter.class);
 		infoPrinter.printMemberInfo(arg[1]);
 	}
 	

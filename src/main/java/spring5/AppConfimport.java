@@ -9,14 +9,10 @@ import config.AppConf2;
 //@Import 애노테이션은 함께 사용할 설정 클래스를 짖어한다.
 //AppConfiImport 설정 클래스를 사용하면 @Import 애노테이션으로 지정한 AppConf 설정 클래스도 함꼐
 //사용하기 때문에 스프링 컨테이너를 생성할 때 AppConf2 설정클래스를 지정할 필요가 없다.
-@Configuration
-@Import(AppConf2.class)	//@Import({AppConf1.class,AppConf2.class}) 2개도 가능
 public class AppConfimport {
-		@Bean
 		public MemberDao memberDao() {
 			return new MemberDao();
 		}
-		@Bean
 		public MemberPrinter memberPrinter() {
 			return new MemberPrinter();
 		}

@@ -4,7 +4,10 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
+
+@Component("listPrinter")
 public class MemberListPrinter {
 		private MemberDao memberDao;
 		private MemberPrinter printer;
@@ -24,7 +27,7 @@ public class MemberListPrinter {
 		}
 		
 		@Autowired
-		@Qualifier("printer1")
+		@Qualifier("printer2")
 		public void setMemberPrinter(MemberPrinter printer) {
 			this.printer = printer;
 		}

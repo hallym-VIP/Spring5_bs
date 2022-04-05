@@ -41,7 +41,7 @@ public class AppConf2 {
 	
 	@Bean
 	public MemberRegisterService memberRegSvc() {
-		return new MemberRegisterService(memberDao);
+		return new MemberRegisterService();
 	}
 	
 	@Bean

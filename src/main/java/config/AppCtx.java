@@ -29,14 +29,10 @@ public class AppCtx {
 		
 		@Bean
 		public MemberRegisterService memberRegSvc() {
-			return new MemberRegisterService(memberDao());
+			return new MemberRegisterService();
 		}
 		
-		@Bean
-		public ChangePasswordService changePwdSvc() {
-			ChangePasswordService change = new ChangePasswordService();
-			return change;
-		}
+		
 //		@Bean
 //		public MemberPrinter memberPrinter() {
 //				return new MemberPrinter();
